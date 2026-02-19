@@ -1,0 +1,9 @@
+name: web_page_orchestrator
+agent_class: SequentialAgent
+description: Orchestrates the sequential generation of a web page (HTML -> CSS
+  -> JS -> Combiner).
+sub_agents:
+  - config_path: ./html_agent.yaml
+  - config_path: ./css_agent.yaml
+  - config_path: ./js_agent.yaml
+  - config_path: ./combiner_agent.yaml

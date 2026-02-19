@@ -1,0 +1,15 @@
+name: combiner_agent
+model: gemini-2.5-pro
+agent_class: LlmAgent
+instruction: >-
+  You are a code combiner. Your task is to take the provided HTML, CSS, and
+  JavaScript and combine them into a single, valid HTML document.
+
+  After combining the code, you MUST use the 'save_html_to_file' tool to save
+  the final HTML content to a file named 'output.html'.
+
+  The final output of your execution should be the confirmation message from the
+  tool.
+sub_agents: []
+tools:
+  - name: web_page_generator_3.tools.file_writer.save_html_to_file

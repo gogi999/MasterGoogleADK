@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Title</title>
+    <meta name="description" content="A brief description of your product or service.">
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #007bff;
+            --primary-hover-color: #0056b3;
+            --secondary-color: #6c757d;
+            --background-color: #ffffff;
+            --light-gray-bg: #f8f9fa;
+            --text-color: #343a40;
+            --text-light: #6c757d;
+            --border-color: #dee2e6;
+            --footer-bg: #212529;
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-hover-color);
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-gray-bg);
+        }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--background-color);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header a[href="#"]:last-of-type {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        header a[href="#"]:last-of-type:hover {
+            background-color: var(--primary-hover-color);
+            color: #fff;
+        }
+
+        header img[src="logo.svg"] {
+            height: 40px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav a {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        #hero h1 {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+        }
+
+        #hero a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        #hero a:hover {
+            background-color: var(--primary-hover-color);
+            color: #fff;
+        }
+
+        #hero img {
+            max-width: 900px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- Section General Headings --- */
+        section > h2 + p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* --- Features Section --- */
+        #features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        #features h2, #features > p {
+            width: 100%;
+        }
+
+        #features article {
+            flex: 1 1 300px;
+            max-width: 350px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #features article img {
+            height: 50px;
+            margin: 0 auto 1.5rem;
+        }
+
+        #features article p {
+            color: var(--text-light);
+        }
+
+        /* --- Testimonials Section --- */
+        #testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        #testimonials h2, #testimonials > p {
+            width: 100%;
+        }
+
+        #testimonials figure {
+            flex: 1 1 400px;
+            max-width: 500px;
+            background-color: var(--background-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        #testimonials blockquote p {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        #testimonials figcaption {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        #testimonials cite {
+            font-style: normal;
+            font-weight: normal;
+            color: var(--text-light);
+        }
+
+
+        /* --- Pricing Section --- */
+        #pricing {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #pricing h2, #pricing > p {
+            width: 100%;
+        }
+
+        #pricing article {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #pricing article:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        #pricing article:nth-of-type(2) {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        #pricing article p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #pricing article span {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        #pricing article ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        #pricing article li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #pricing article li:last-child {
+            border-bottom: none;
+        }
+
+        #pricing article a {
+            display: block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        #pricing article:nth-of-type(2) a {
+            background-color: var(--primary-color);
+        }
+
+        #pricing article a:hover {
+            opacity: 0.9;
+            color: #fff;
+        }
+
+
+        /* --- CTA Section --- */
+        #cta {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+        }
+
+        #cta h2 {
+            color: #fff;
+        }
+
+        #cta p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        #cta a {
+            display: inline-block;
+            background-color: #fff;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        #cta a:hover {
+            background-color: #f1f1f1;
+            color: var(--primary-hover-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: #fff;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        footer > div, footer > nav, footer address {
+            margin-bottom: 2rem;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        footer a {
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            color: #fff;
+        }
+
+        footer address p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        footer div[class*="social"] img {
+            height: 24px;
+        }
+
+        footer > p:last-of-type {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 3rem 1rem; }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            header nav ul {
+                gap: 1rem;
+                padding: 0;
+                justify-content: center;
+            }
+
+            #pricing article:nth-of-type(2) {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#">
+            <img src="logo.svg" alt="Company Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </nav>
+        <a href="#">Sign Up</a>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Compelling Headline That Grabs Attention</h1>
+            <p>This is a short, engaging subheading that explains the value of your product or service and encourages the user to take action.</p>
+            <a href="#">Get Started for Free</a>
+            <img src="hero-image.jpg" alt="A descriptive image of the product in action.">
+        </section>
+
+        <section id="features">
+            <h2>Discover Our Amazing Features</h2>
+            <p>Explore the core functionalities that make our product unique and powerful.</p>
+            
+            <article>
+                <img src="feature-icon-1.svg" alt="">
+                <h3>Feature One</h3>
+                <p>Describe the first key feature. Focus on the benefit it provides to the user and how it solves a specific problem.</p>
+            </article>
+
+            <article>
+                <img src="feature-icon-2.svg" alt="">
+                <h3>Feature Two</h3>
+                <p>Describe the second key feature. Explain its value and why it's essential for the target audience.</p>
+            </article>
+            
+            <article>
+                <img src="feature-icon-3.svg" alt="">
+                <h3>Feature Three</h3>
+                <p>Describe the third key feature. Highlight what sets it apart from competitors or other solutions.</p>
+            </article>
+        </section>
+
+        <section id="testimonials">
+            <h2>What Our Customers Say</h2>
+            <p>Real stories from satisfied users who have benefited from our service.</p>
+            
+            <figure>
+                <blockquote>
+                    <p>"This product has completely transformed our workflow. We're more efficient and productive than ever before. Highly recommended!"</p>
+                </blockquote>
+                <figcaption>
+                    <cite>Jane Doe</cite>, CEO of ExampleCorp
+                </figcaption>
+            </figure>
+
+            <figure>
+                <blockquote>
+                    <p>"The customer support is top-notch, and the features are exactly what we needed. A game-changer for our team."</p>
+                </blockquote>
+                <figcaption>
+                    <cite>John Smith</cite>, Project Manager at Innovate Inc.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section id="pricing">
+            <h2>Choose Your Plan</h2>
+            <p>Simple, transparent pricing that scales with your needs. No hidden fees.</p>
+
+            <article>
+                <h3>Basic</h3>
+                <p><span>$10</span>/month</p>
+                <ul>
+                    <li>Core Feature A</li>
+                    <li>Core Feature B</li>
+                    <li>Standard Support</li>
+                    <li>10GB Storage</li>
+                </ul>
+                <a href="#">Select Plan</a>
+            </article>
+
+            <article>
+                <h3>Pro</h3>
+                <p><span>$25</span>/month</p>
+                <ul>
+                    <li>All Basic Features</li>
+                    <li>Advanced Feature C</li>
+                    <li>Advanced Feature D</li>
+                    <li>Priority Support</li>
+                    <li>50GB Storage</li>
+                </ul>
+                <a href="#">Select Plan</a>
+            </article>
+
+            <article>
+                <h3>Enterprise</h3>
+                <p>Contact Us</p>
+                <ul>
+                    <li>All Pro Features</li>
+                    <li>Dedicated Account Manager</li>
+                    <li>Custom Integrations</li>
+                    <li>24/7 Premium Support</li>
+                    <li>Unlimited Storage</li>
+                </ul>
+                <a href="#">Contact Sales</a>
+            </article>
+        </section>
+
+        <section id="cta">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of users and take your productivity to the next level. Start your free trial today, no credit card required.</p>
+            <a href="#">Sign Up Now</a>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </nav>
+        <address>
+            <p>Company Name Inc.</p>
+            <p>123 Web St, San Francisco, CA 94107</p>
+        </address>
+        <div>
+            <ul>
+                <li><a href="#"><img src="social-twitter.svg" alt="Twitter"></a></li>
+                <li><a href="#"><img src="social-linkedin.svg" alt="LinkedIn"></a></li>
+                <li><a href="#"><img src="social-facebook.svg" alt="Facebook"></a></li>
+            </ul>
+        </div>
+        <p>&copy; 2023 Company Name. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // --- Smooth Scrolling for Navigation Links ---
+          const navLinks = document.querySelectorAll('header nav a[href^="#"], a[href^="#hero"]');
+          const header = document.querySelector('header');
+
+          const smoothScroll = (e) => {
+            e.preventDefault();
+            const href = e.currentTarget.getAttribute('href');
+            
+            // Handle simple '#' links that should go to the top
+            if (href === '#') {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                return;
+            }
+
+            const targetElement = document.querySelector(href);
+
+            if (targetElement) {
+              // Get height of the sticky header to offset the scroll
+              const headerHeight = header ? header.offsetHeight : 0;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          };
+
+          navLinks.forEach(link => {
+            link.addEventListener('click', smoothScroll);
+          });
+        });
+    </script>
+</body>
+</html>

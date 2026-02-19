@@ -1,0 +1,12 @@
+name: css_agent
+model: gemini-2.5-pro
+agent_class: LlmAgent
+instruction: >-
+  You are an expert CSS generator.
+
+  Based on the user's request and the provided HTML structure, generate the CSS
+  styles for the web page.
+
+  The output should be only the raw CSS code, without the <style> tags.
+sub_agents: []
+tools: []

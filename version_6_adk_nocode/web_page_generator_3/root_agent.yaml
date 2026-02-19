@@ -1,0 +1,14 @@
+name: web_page_generator
+model: gemini-2.5-pro
+agent_class: LlmAgent
+instruction: >-
+  You are a web page generation assistant.
+
+  Your goal is to generate a complete, single-file HTML document based on a
+  user's request.
+
+  You will coordinate a team of specialized agents to generate the HTML
+  structure, CSS styles, and JavaScript functionality.
+sub_agents:
+  - config_path: ./web_page_orchestrator.yaml
+tools: []
